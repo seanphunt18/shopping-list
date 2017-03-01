@@ -8,12 +8,11 @@ var addItem = function(state, item) {
 };
 
 // var toggleClass = function(state, item) {
-//     state.items ;
+
 // }
 
 var removeItem = function(state, item) {
-    var position = items.indexOf(event.target);
-    state.items.splice(position, 1);
+    state.items.splice(item, 1);
 };
 
 // Render functions
@@ -52,12 +51,15 @@ $(function() {
     });
 
     // $('.shopping-item-toggle').click(function(event) {
-    //     toggleClass(state, );
+    //     event.preventDefault();
+
+    //     renderList(state, $('.shopping-list'));        
     // });
 
-    $('.shopping-item-delete').submit(function(event) {
+    $('.shopping-item-delete').click(function(event) {
         event.preventDefault;
-        removeItem(state, item);
-    })
+        removeItem(state, $(this));
+        renderList(state, $('.shopping-list'));
+    });
 
 });
