@@ -7,9 +7,9 @@ var addItem = function(state, item) {
     state.items.push(item);
 };
 
-// var toggleClass = function(state, item) {
-
-// }
+var toggleClass = function(item) {
+    item.toggleClass("shopping-item__checked");
+}
 
 var removeItem = function(state, item) {
     state.items.splice(item, 1);
@@ -50,15 +50,16 @@ $(function() {
         renderList(state, $('.shopping-list'));
     });
 
-    // $('.shopping-item-toggle').click(function(event) {
-    //     event.preventDefault();
-
-    //     renderList(state, $('.shopping-list'));        
-    // });
+    $('.shopping-item-toggle').click(function(event) {
+        event.preventDefault();
+        toggleClass($(event.target).closest("li"));
+        renderList(state, $('.shopping-list'));        
+    });
 
     $('.shopping-item-delete').click(function(event) {
         event.preventDefault;
-        removeItem(state, $(this));
+        event.stopPropogation;
+        removeItem(state, $(event.target));
         renderList(state, $('.shopping-list'));
     });
 
